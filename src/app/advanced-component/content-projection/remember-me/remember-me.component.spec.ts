@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentProjectionComponent } from './content-projection.component';
+import { RememberMeComponent } from './remember-me.component';
 
-describe('ContentProjectionComponent', () => {
-  let component: ContentProjectionComponent;
-  let fixture: ComponentFixture<ContentProjectionComponent>;
+describe('RememberMeComponent', () => {
+  let component: RememberMeComponent;
+  let fixture: ComponentFixture<RememberMeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContentProjectionComponent ]
+      declarations: [ RememberMeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentProjectionComponent);
+    fixture = TestBed.createComponent(RememberMeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

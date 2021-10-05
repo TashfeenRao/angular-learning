@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ContentChildComponent } from './advanced-component/content-child/content-child.component';
 import { RememberMeComponent } from './advanced-component/content-projection/remember-me/remember-me.component';
+import { ShowMessageComponent } from './advanced-component/content-projection/show-message/show-message.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { RememberMeComponent } from './advanced-component/content-projection/rem
     ContentChildComponent,
     ContentProjectionComponent,
     RememberMeComponent,
+    ShowMessageComponent,
   ],
   imports: [BrowserModule],
   providers: [],

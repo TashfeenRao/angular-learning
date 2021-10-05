@@ -1,3 +1,4 @@
+import { ShowMessageComponent } from './show-message/show-message.component';
 import { RememberMeComponent } from './remember-me/remember-me.component';
 import {
   Component,
@@ -6,6 +7,7 @@ import {
   AfterContentInit,
   ContentChildren,
   QueryList,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -14,6 +16,7 @@ import {
   styleUrls: ['./content-projection.component.css'],
 })
 export class ContentProjectionComponent implements AfterContentInit {
+  @ViewChild(ShowMessageComponent) message: ShowMessageComponent;
   @ContentChildren(RememberMeComponent)
   remember: QueryList<RememberMeComponent>;
   showMessage: boolean = false;
@@ -21,6 +24,13 @@ export class ContentProjectionComponent implements AfterContentInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    if (this.message) {
+      console.log(this.message.days);
+      console.log(this.message.testFunc());
+    }
+  }
 
   ngAfterContentInit() {
     if (this.remember) {

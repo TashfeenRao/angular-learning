@@ -8,6 +8,8 @@ import {
   ContentChildren,
   QueryList,
   ViewChild,
+  ViewChildren,
+  ChangeDetectorRef,
 } from '@angular/core';
 
 @Component({
@@ -16,19 +18,25 @@ import {
   styleUrls: ['./content-projection.component.css'],
 })
 export class ContentProjectionComponent implements AfterContentInit {
-  @ViewChild(ShowMessageComponent) message: ShowMessageComponent;
+  @ViewChildren(ShowMessageComponent) message: QueryList<ShowMessageComponent>;
   @ContentChildren(RememberMeComponent)
   remember: QueryList<RememberMeComponent>;
   showMessage: boolean = false;
 
-  constructor() {}
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
     if (this.message) {
-      console.log(this.message.days);
-      console.log(this.message.testFunc());
+      this.message.forEach((item) => {
+        // setTimeout(() => {
+        //   item.days = 30;
+        // }); this is hacky for mutating the view child input and avoiding the error because view has already displayed any futture change with cause and development error
+        item.days = 30;
+        this.cd.detectChanges();
+        // this checks for change after view init if found then re render's the component
+      });
     }
   }
 

@@ -7,10 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowMessageComponent {
   days: number = 7;
-  test: boolean = false;
   constructor() {}
-
-  testFunc() {
-    return (this.test = true);
-  }
 }

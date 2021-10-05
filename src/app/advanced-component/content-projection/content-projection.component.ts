@@ -10,6 +10,7 @@ import {
   ViewChild,
   ViewChildren,
   ChangeDetectorRef,
+  ElementRef,
 } from '@angular/core';
 
 @Component({
@@ -19,6 +20,7 @@ import {
 })
 export class ContentProjectionComponent implements AfterContentInit {
   @ViewChildren(ShowMessageComponent) message: QueryList<ShowMessageComponent>;
+  @ViewChild('email') emailRef: ElementRef;
   @ContentChildren(RememberMeComponent)
   remember: QueryList<RememberMeComponent>;
   showMessage: boolean = false;
@@ -29,6 +31,7 @@ export class ContentProjectionComponent implements AfterContentInit {
 
   ngAfterViewInit() {
     if (this.message) {
+      console.log(this.emailRef);
       this.message.forEach((item) => {
         // setTimeout(() => {
         //   item.days = 30;

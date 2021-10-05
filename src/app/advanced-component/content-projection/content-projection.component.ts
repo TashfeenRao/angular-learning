@@ -4,6 +4,8 @@ import {
   OnInit,
   ContentChild,
   AfterContentInit,
+  ContentChildren,
+  QueryList,
 } from '@angular/core';
 
 @Component({
@@ -12,7 +14,8 @@ import {
   styleUrls: ['./content-projection.component.css'],
 })
 export class ContentProjectionComponent implements AfterContentInit {
-  @ContentChild(RememberMeComponent) remember: RememberMeComponent;
+  @ContentChildren(RememberMeComponent)
+  remember: QueryList<RememberMeComponent>;
   showMessage: boolean = false;
 
   constructor() {}
@@ -21,8 +24,10 @@ export class ContentProjectionComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     if (this.remember) {
-      this.remember.checked.subscribe((checked: boolean) => {
-        this.showMessage = checked;
+      this.remember.forEach((item) => {
+        item.checked.subscribe((checked: boolean) => {
+          this.showMessage = checked;
+        });
       });
     }
   }

@@ -11,6 +11,5 @@ export class AppComponent {
 
   onRememberClicked(checked: boolean) {
     this.rememberChecked = checked;
-    console.log(this.rememberChecked);
   }
 }
